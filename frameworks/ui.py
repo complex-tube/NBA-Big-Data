@@ -1,5 +1,3 @@
-import pandas
-
 from adapters.stats_presenter import StatsPresenter
 from adapters.games_presenter import GamesPresenter
 from adapters.games_repo import GamesRepo
