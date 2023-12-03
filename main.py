@@ -48,7 +48,7 @@ while int(continue_program) != 0:
     elif int(choice) == 3:
         print("Вы выбрали вариант 3")
         ui.exit()
-        input("Для выключение нажмите клавишу enter")
+        input("Для выключения нажмите клавишу enter")
         exit(0)
     print("Желаете продолжить работу?")
     print("Да - 1")
