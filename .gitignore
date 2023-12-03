@@ -1,0 +1,9 @@
+build/
+data/
+dist/
+ELK/
+*.dvd
+*.dvm
+venv/
+*.exe
+.idea
