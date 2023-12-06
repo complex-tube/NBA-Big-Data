@@ -18,7 +18,11 @@ class GamesRepo(IGetGamesFromRepo, ISaveGamesRepo):
         self.save_games_framework = save_games_framework
 
     def get_games(self, season: int) -> List[pandas.DataFrame]:
-        return self.get_games_from_framework.get_games(season)
+        try:
+            return self.get_games_from_framework.get_games(season)
+        except:
+            print('Не удалось получить доступ к API')
+            return []
 
     def save_games(self, games: List[pandas.DataFrame], season: int):
         self.save_games_framework.save_games(games, season)

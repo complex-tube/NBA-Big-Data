@@ -19,7 +19,11 @@ class StatsRepo(IGetStatsFromRepo, ISaveStatsRepo):
         pass
 
     def get_stats(self, season: int) -> List[pandas.DataFrame]:
-        return self.get_stats_from_framework.get_stats(season)
+        try:
+            return self.get_stats_from_framework.get_stats(season)
+        except:
+            print('Не удалось получить доступ к API')
+            return []
 
     def save_stats(self, stats: List[pandas.DataFrame], season: int):
         self.save_stats_framework.save_stats(stats, season)
