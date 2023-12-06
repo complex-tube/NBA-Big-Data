@@ -21,7 +21,6 @@ class ELK:
 
     def launch_elasticsearch(self):
         full_path_elastic = os.path.abspath('./ELK/elasticsearch/bin/elasticsearch.bat')
-        print(full_path_elastic)
 
         try:
             self.elastic_process = subprocess.Popen(full_path_elastic, creationflags=subprocess.CREATE_NEW_CONSOLE)
@@ -31,7 +30,6 @@ class ELK:
 
     def launch_kibana(self):
         full_path_kibana = os.path.abspath('./ELK/kibana/bin/kibana.bat')
-        print(full_path_kibana)
 
         try:
             self.kibana_process = subprocess.Popen(full_path_kibana, creationflags=subprocess.CREATE_NEW_CONSOLE)
