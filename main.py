@@ -3,14 +3,16 @@ import threading
 from frameworks.ui import UI
 
 
-def download_games():
+def download_games(start_year: int, end_year: int):
     global ui
-    ui.download_games_option_chosen()
+    print(start_year, end_year)
+    ui.download_games_option_chosen(start_year, end_year)
 
 
-def download_stats():
+def download_stats(start_year: int, end_year: int):
     global ui
-    ui.download_stats_option_chosen()
+    print(start_year, end_year)
+    ui.download_stats_option_chosen(start_year, end_year)
 
 
 ui = UI()
@@ -36,8 +38,17 @@ while int(continue_program) != 0:
         choice = input()
     if int(choice) == 1:
         print("Вы выбрали вариант 1")
-        games_thread = threading.Thread(target=download_games)
-        stats_thread = threading.Thread(target=download_stats)
+        print("Выберите диапозон для скачивания")
+        start_year = input("Год начала диапозона: ")
+        while not start_year.isdecimal() or (int(start_year) < 1900):
+            print("Некорректно указан год.\nНапишите год еще раз")
+            start_year = input("Год начала диапозона: ")
+        end_year = input("Год конца диапозона: ")
+        while not end_year.isdecimal() or (int(end_year) < 1900 or int(end_year) < int(start_year)):
+            print("Некорректно указан год.\nНапишите год еще раз")
+            end_year = input("Год конца диапозона: ")
+        games_thread = threading.Thread(target=download_games, args=(int(start_year), int(end_year)))
+        stats_thread = threading.Thread(target=download_stats, args=(int(start_year), int(end_year)))
         games_thread.start()
         stats_thread.start()
         games_thread.join()

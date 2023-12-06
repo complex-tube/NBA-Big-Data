@@ -33,19 +33,19 @@ class UI:
     def connect_to_elastic(self):
         self.elk.connect_to_elastic()
 
-    def download_games_option_chosen(self):
+    def download_games_option_chosen(self, start_year: int, end_year: int):
         games_presenter = GamesPresenter()
         games_remote = GamesRemote()
         games_csv = GamesCSV()
         games_repo: GamesRepo = GamesRepo(games_remote, games_csv)
-        games_presenter.download_games(games_repo)
+        games_presenter.download_games(games_repo, start_year, end_year)
 
-    def download_stats_option_chosen(self):
+    def download_stats_option_chosen(self, start_year: int, end_year: int):
         stat_presenter = StatsPresenter()
         stats_remote = StatsRemote()
         stats_csv = StatsCsv()
         stats_repo = StatsRepo(stats_remote, stats_csv)
-        stat_presenter.download_stats(stats_repo)
+        stat_presenter.download_stats(stats_repo, start_year, end_year)
 
     def exit(self):
         print('Закройте все окна командой строки: elasticserach, kibana и logstash')

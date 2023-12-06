@@ -8,3 +8,4 @@ venv/
 *.exe
 .idea
 *.spec
+*.rar

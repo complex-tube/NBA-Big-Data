@@ -10,8 +10,8 @@ class DownloadStatsUseCase:
         self.get_stats_from_repo = get_stats_from_repo
         self.save_stats_repo = save_stats_repo
 
-    def invoke(self):
-        seasons = range(1900, 2024)
+    def invoke(self, start_year: int, end_year: int):
+        seasons = range(start_year, end_year + 1)
 
         for season in seasons:
             self.save_stats_repo.save_stats(self.get_stats_from_repo.get_stats(season), season)
